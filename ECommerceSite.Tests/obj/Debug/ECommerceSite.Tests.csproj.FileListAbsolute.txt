@@ -46,3 +46,5 @@ C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite.
 C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite.Tests\obj\Debug\ECommerceSite.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite.Tests\obj\Debug\ECommerceSite.Tests.dll
 C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite.Tests\obj\Debug\ECommerceSite.Tests.pdb
+C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite.Tests\bin\Debug\RestSharp.dll
+C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite.Tests\bin\Debug\RestSharp.xml

@@ -9,7 +9,7 @@ namespace ECommerceSite.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "ECommerceSite.Infrastructure.ECommerceSiteDB";
         }
 

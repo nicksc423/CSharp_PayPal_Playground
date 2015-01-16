@@ -59,3 +59,7 @@ C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\
 C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\obj\Debug\ECommerceSite.csprojResolveAssemblyReference.cache
 C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\obj\Debug\ECommerceSite.dll
 C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\obj\Debug\ECommerceSite.pdb
+C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\bin\RestSharp.dll
+C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\bin\RestSharp.xml
+C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\obj\Debug\ECommerceSite.Migrations.InitialCreate.resources
+C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\obj\Debug\ECommerceSite.csproj.GenerateResource.Cache
