@@ -48,3 +48,6 @@ C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite.
 C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite.Tests\obj\Debug\ECommerceSite.Tests.pdb
 C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite.Tests\bin\Debug\RestSharp.dll
 C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite.Tests\bin\Debug\RestSharp.xml
+C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite.Tests\bin\Debug\Twilio.Api.dll
+C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite.Tests\bin\Debug\Twilio.Api.pdb
+C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite.Tests\bin\Debug\Twilio.Api.xml
