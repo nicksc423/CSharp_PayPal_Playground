@@ -7,6 +7,7 @@ using Microsoft.Owin.Security.Google;
 using Owin;
 using ECommerceSite.Models;
 using ECommerceSite.Infrastructure;
+using System.Configuration;
 
 namespace ECommerceSite
 {
@@ -55,15 +56,16 @@ namespace ECommerceSite
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: ConfigurationManager.AppSettings["facebookAppId"],
+               appSecret: ConfigurationManager.AppSettings["facebookAppSecret"]
+            );
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = ConfigurationManager.AppSettings["googleClientId"],
+                ClientSecret = ConfigurationManager.AppSettings["googleClientSecret"]
+            });
         }
     }
 }
