@@ -9,7 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ECommerceSite.ViewModels;
-using ECommerceSite.Models;
+using ECommerceSite.Infrastructure;
 
 namespace ECommerceSite.Controllers
 {

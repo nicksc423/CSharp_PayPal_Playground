@@ -7,7 +7,7 @@ using System.Web;
 
 namespace ECommerceSite.Infrastructure
 {
-    public class ECommerceSiteDB : IdentityDbContext<ECommerceSite.Models.ApplicationUser>
+    public class ECommerceSiteDB : IdentityDbContext<ECommerceSite.Infrastructure.ApplicationUser>
     {
         // You can add custom code to this file. Changes will not be overwritten.
         // 
