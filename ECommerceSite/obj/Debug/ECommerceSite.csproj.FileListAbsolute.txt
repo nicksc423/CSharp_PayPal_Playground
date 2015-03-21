@@ -61,8 +61,6 @@ C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\
 C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\obj\Debug\ECommerceSite.pdb
 C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\bin\RestSharp.dll
 C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\bin\RestSharp.xml
-C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\obj\Debug\ECommerceSite.Migrations.InitialCreate.resources
-C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\obj\Debug\ECommerceSite.csproj.GenerateResource.Cache
 C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\bin\Twilio.Api.dll
 C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\bin\Twilio.Api.pdb
 C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\bin\Twilio.Api.xml

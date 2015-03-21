@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace ECommerceSite.Models
 {
@@ -30,14 +31,14 @@ namespace ECommerceSite.Models
             // Get the matching cart and item instances
             var cartItem = dbContext.Carts.SingleOrDefault(
                 c => c.CartId == ShoppingCartId
-                && c.ItemId == item.ID);
+                && c.ItemId == item.ItemId);
 
             if (cartItem == null)
             {
                 // Create a new cart item if no cart item exists
                 cartItem = new Cart
                 {
-                    ItemId = item.ID,
+                    ItemId = item.ItemId,
                     CartId = ShoppingCartId,
                     Count = 1,
                     DateCreated = DateTime.Now

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using ECommerceSite.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -7,7 +8,7 @@ using System.Web;
 
 namespace ECommerceSite.Infrastructure
 {
-    public class ECommerceSiteDB : IdentityDbContext<ECommerceSite.Infrastructure.ApplicationUser>
+    public class ECommerceSiteDB : IdentityDbContext<ApplicationUser>
     {
         // You can add custom code to this file. Changes will not be overwritten.
         // 
@@ -18,6 +19,18 @@ namespace ECommerceSite.Infrastructure
 
         public ECommerceSiteDB() : base("ECommerceSiteDB", throwIfV1Schema: false)
         {
+        }
+
+        public DbSet<Item> Items { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+
+        static ECommerceSiteDB() {
+            // Set the database intializer which is run once during application start
+            // This seeds the database with admin user credentials and admin role
+            Database.SetInitializer<ECommerceSiteDB>(new ECommerceSiteDbInitializer());
         }
 
         public static ECommerceSiteDB Create()
