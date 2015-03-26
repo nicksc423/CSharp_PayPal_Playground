@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ECommerceSite.ViewModels;
+using ECommerceSite.Infrastructure;
 using ECommerceSite.Models;
 
 namespace ECommerceSite.Controllers
@@ -95,6 +96,7 @@ namespace ECommerceSite.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    MigrateShoppingCart(model.Email);
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -441,6 +443,15 @@ namespace ECommerceSite.Controllers
             }
 
             base.Dispose(disposing);
+        }
+
+        private void MigrateShoppingCart(string UserName)
+        {
+            // Associate shopping cart items with logged-in user
+            var cart = ShoppingCart.GetCart(this.HttpContext);
+
+            cart.MigrateCart(UserName);
+            Session[ShoppingCart.CartSessionKey] = UserName;
         }
 
         #region Helpers

@@ -15,7 +15,7 @@ namespace ECommerceSite
     {
         protected void Application_Start()
         {
-            Database.SetInitializer(new ECommerceSiteDbInitializer());
+            //Database.SetInitializer(new ECommerceSiteDbInitializer());
 
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);

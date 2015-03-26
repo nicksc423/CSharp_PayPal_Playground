@@ -1,4 +1,5 @@
-﻿@using Microsoft.AspNet.Identity
+﻿@using ECommerceSite.ViewModels
+@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -21,7 +22,7 @@ else
         <li class="dropdown" id="menuLogin">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
             <div class="dropdown-menu" style="padding:17px;">
-                @Html.Partial("_LoginDropdownPartial")
+                @Html.Partial("_LoginDropdownPartial", new LoginViewModel())
             </div>
         </li>
     </ul>
