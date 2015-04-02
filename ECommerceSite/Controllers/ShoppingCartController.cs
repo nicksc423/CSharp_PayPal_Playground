@@ -53,7 +53,7 @@ namespace ECommerceSite.Controllers
 
             // Get the name of the album to display confirmation
             string itemName = dbContext.Carts
-                .Single(item => item.RecordId == id).Item.Name;
+                .Single(item => item.ItemId == id).Item.Name;
 
             // Remove from cart
             int itemCount = cart.RemoveFromCart(id);

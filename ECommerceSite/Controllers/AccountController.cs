@@ -17,6 +17,7 @@ namespace ECommerceSite.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private bool requireConfirmationEmail = false;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -75,18 +76,21 @@ namespace ECommerceSite.Controllers
                 return View(model);
             }
 
-            // Require the user to have a confirmed email before they can log on.
-            var user = UserManager.Find(model.Email, model.Password);
-            if (user != null)
+            if(requireConfirmationEmail)
             {
-                if (!await UserManager.IsEmailConfirmedAsync(user.Id))
+                // Require the user to have a confirmed email before they can log on.
+                var user = UserManager.Find(model.Email, model.Password);
+                if (user != null)
                 {
-                    string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account-Resend");
-
-                    // Uncomment to debug locally  
-                    // ViewBag.Link = callbackUrl;
-                    ViewBag.errorMessage = "You must have a confirmed email to log on. The confirmation token has been resent to your email account.";
-                    return View("Error");
+                    if (!await UserManager.IsEmailConfirmedAsync(user.Id))
+                    {
+                        string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account-Resend");
+    
+                        // Uncomment to debug locally  
+                        // ViewBag.Link = callbackUrl;
+                        ViewBag.errorMessage = "You must have a confirmed email to log on. The confirmation token has been resent to your email account.";
+                        return View("Error");
+                    }
                 }
             }
 
@@ -173,20 +177,29 @@ namespace ECommerceSite.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    //  Comment the following line to prevent log in until the user is confirmed.
-                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    //create a shopping cart for the user
+                    MigrateShoppingCart(model.Email);
+
+                    if (requireConfirmationEmail)
+                    {
+                        // Send a confirmation email
+                        var callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your email");
+
+                        // Uncomment to debug locally 
+                        // TempData["ViewBagLink"] = callbackUrl;
+
+                        ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
+                                        + "before you can log in.";
+
+                        return View("Info");
+                    }
+                    else
+                    {
+                        //  Comment the following line to prevent log in until the user is confirmed.
+                        await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
-                    // Send a confirmation email
-                    var callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your email");
-
-                    // Uncomment to debug locally 
-                    // TempData["ViewBagLink"] = callbackUrl;
-
-                    ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
-                                    + "before you can log in.";
-
-                    return View("Info");
-                    //return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
                 AddErrors(result);
             }
@@ -194,6 +207,20 @@ namespace ECommerceSite.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+        //public async Task<ActionResult> RegisterWithConfirmationEmail(ApplicationUser user)
+        //{
+        //    // Send a confirmation email
+        //    var callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your email");
+
+        //    // Uncomment to debug locally 
+        //    // TempData["ViewBagLink"] = callbackUrl;
+
+        //    ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
+        //                    + "before you can log in.";
+
+        //    return View("Info");
+        //}
 
         //
         // GET: /Account/ConfirmEmail

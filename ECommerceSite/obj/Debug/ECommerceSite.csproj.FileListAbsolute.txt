@@ -64,3 +64,5 @@ C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\
 C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\bin\Twilio.Api.dll
 C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\bin\Twilio.Api.pdb
 C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\bin\Twilio.Api.xml
+C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\bin\PayPal.dll
+C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\bin\PayPal.xml

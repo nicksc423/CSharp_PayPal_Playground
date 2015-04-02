@@ -1,0 +1,114 @@
+﻿@model ECommerceSite.ViewModels.OrderViewModel
+
+@{
+    ViewBag.Title = "Address And Payment";
+}
+<link rel="stylesheet" href="~/Content/card.css">
+
+<div class="container-large container-fluid">
+    <div class="well bs-component">
+        @using (Html.BeginForm(new { @class = "form-horizontal" }))
+        {
+            <h2>Address And Payment</h2>
+            <fieldset>
+                <legend>Shipping Information</legend>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "First Name" } })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Last Name" } })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Street Address" } })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "City" } })
+                        @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "State" } })
+                        @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PostalCode, htmlAttributes: new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Zip Code" } })
+                        @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Country" } })
+                        @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CreditCardNumber, htmlAttributes: new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CreditCardNumber, new { htmlAttributes = new { @class = "form-control", @placeholder = "Credit Card Number" } })
+                        @Html.ValidationMessageFor(model => model.CreditCardNumber, "", new { @class = "text-danger" })
+                        <span class="help-block">For security the credit card is not stored in our system.</span>
+                    </div>
+                </div>
+                <div class="form-roup">
+                    @Html.LabelFor(model => model.ExpirationMonth, htmlAttributes: new { @class = "col-md-2 control-label" })
+                    <div class="col-md-2">
+                        <div class="editor-field">
+                            @Html.DropDownListFor(model => model.ExpirationMonth, (IEnumerable<SelectListItem>)ViewBag.Months, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">@*force a new row*@</div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ExpirationYear, htmlAttributes: new { @class = "col-md-2 control-label" })
+                    <div class="col-md-2">
+                        <div class="editor-field">
+                            @Html.DropDownListFor(model => model.ExpirationYear, (IEnumerable<SelectListItem>)ViewBag.Years, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">@*force a new row*@</div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CcType, htmlAttributes: new { @class = "col-md-2 control-label" })
+                    <div class="col-md-3">
+                        <div class="editor-field">
+                            @Html.DropDownListFor(model => model.CcType, (IEnumerable<SelectListItem>)ViewBag.CreditCardTypes, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary">Submit Order &raquo;</button>
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
