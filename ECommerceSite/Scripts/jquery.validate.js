@@ -441,7 +441,7 @@ $.extend( $.validator, {
 		// http://jqueryvalidation.org/Validator.showErrors/
 		showErrors: function( errors ) {
 			if ( errors ) {
-				// add items to error list and map
+				// add products to error list and map
 				$.extend( this.errorMap, errors );
 				this.errorList = [];
 				for ( var name in errors ) {
@@ -450,7 +450,7 @@ $.extend( $.validator, {
 						element: this.findByName( name )[ 0 ]
 					});
 				}
-				// remove items from success list
+				// remove products from success list
 				this.successList = $.grep( this.successList, function( element ) {
 					return !( element.name in errors );
 				});

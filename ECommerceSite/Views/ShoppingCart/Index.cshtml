@@ -24,20 +24,20 @@
         </th>
         <th></th>
     </tr>
-    @foreach (var item in Model.CartItems)
+    @foreach (var product in Model.CartProducts)
     {
-        <tr id="row-@item.ItemId">
+        <tr id="row-@product.ProductId">
             <td>
-                @Html.ActionLink(item.Item.Name,"Details", "Store", new { id = item.ItemId }, null)
+                @Html.ActionLink(product.Product.Name,"Details", "Store", new { id = product.ProductId }, null)
             </td>
             <td>
-                @item.Item.Price
+                @product.Product.Price
             </td>
-            <td id="item-count-@item.ItemId">
-                @item.Count
+            <td id="product-count-@product.ProductId">
+                @product.Count
             </td>
             <td>
-                <a href="#" class="RemoveLink" data-id="@item.ItemId">
+                <a href="#" class="RemoveLink" data-id="@product.ProductId">
                     Remove from cart
                 </a>
             </td>
@@ -56,5 +56,5 @@
 </table>
 
 @section Scripts {
-    <script src="~/Scripts/App/RemoveItemFromCart.js"> </script>
+    @Scripts.Render("~/Scripts/App/RemoveProductFromCart.js");
 }

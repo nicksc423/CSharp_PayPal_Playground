@@ -310,7 +310,7 @@ if (typeof jQuery === 'undefined') {
     this.sliding     =
     this.interval    =
     this.$active     =
-    this.$items      = null
+    this.$products      = null
 
     this.options.keyboard && this.$element.on('keydown.bs.carousel', $.proxy(this.keydown, this))
 
@@ -353,28 +353,28 @@ if (typeof jQuery === 'undefined') {
     return this
   }
 
-  Carousel.prototype.getItemIndex = function (item) {
-    this.$items = item.parent().children('.item')
-    return this.$items.index(item || this.$active)
+  Carousel.prototype.getProductIndex = function (product) {
+    this.$products = product.parent().children('.product')
+    return this.$products.index(product || this.$active)
   }
 
-  Carousel.prototype.getItemForDirection = function (direction, active) {
+  Carousel.prototype.getProductForDirection = function (direction, active) {
     var delta = direction == 'prev' ? -1 : 1
-    var activeIndex = this.getItemIndex(active)
-    var itemIndex = (activeIndex + delta) % this.$items.length
-    return this.$items.eq(itemIndex)
+    var activeIndex = this.getProductIndex(active)
+    var productIndex = (activeIndex + delta) % this.$products.length
+    return this.$products.eq(productIndex)
   }
 
   Carousel.prototype.to = function (pos) {
     var that        = this
-    var activeIndex = this.getItemIndex(this.$active = this.$element.find('.item.active'))
+    var activeIndex = this.getProductIndex(this.$active = this.$element.find('.product.active'))
 
-    if (pos > (this.$items.length - 1) || pos < 0) return
+    if (pos > (this.$products.length - 1) || pos < 0) return
 
     if (this.sliding)       return this.$element.one('slid.bs.carousel', function () { that.to(pos) }) // yes, "slid"
     if (activeIndex == pos) return this.pause().cycle()
 
-    return this.slide(pos > activeIndex ? 'next' : 'prev', this.$items.eq(pos))
+    return this.slide(pos > activeIndex ? 'next' : 'prev', this.$products.eq(pos))
   }
 
   Carousel.prototype.pause = function (e) {
@@ -401,8 +401,8 @@ if (typeof jQuery === 'undefined') {
   }
 
   Carousel.prototype.slide = function (type, next) {
-    var $active   = this.$element.find('.item.active')
-    var $next     = next || this.getItemForDirection(type, $active)
+    var $active   = this.$element.find('.product.active')
+    var $next     = next || this.getProductForDirection(type, $active)
     var isCycling = this.interval
     var direction = type == 'next' ? 'left' : 'right'
     var fallback  = type == 'next' ? 'first' : 'last'
@@ -410,7 +410,7 @@ if (typeof jQuery === 'undefined') {
 
     if (!$next.length) {
       if (!this.options.wrap) return
-      $next = this.$element.find('.item')[fallback]()
+      $next = this.$element.find('.product')[fallback]()
     }
 
     if ($next.hasClass('active')) return (this.sliding = false)
@@ -429,7 +429,7 @@ if (typeof jQuery === 'undefined') {
 
     if (this.$indicators.length) {
       this.$indicators.find('.active').removeClass('active')
-      var $nextIndicator = $(this.$indicators.children()[this.getItemIndex($next)])
+      var $nextIndicator = $(this.$indicators.children()[this.getProductIndex($next)])
       $nextIndicator && $nextIndicator.addClass('active')
     }
 
@@ -815,17 +815,17 @@ if (typeof jQuery === 'undefined') {
     }
 
     var desc = ' li:not(.divider):visible a'
-    var $items = $parent.find('[role="menu"]' + desc + ', [role="listbox"]' + desc)
+    var $products = $parent.find('[role="menu"]' + desc + ', [role="listbox"]' + desc)
 
-    if (!$items.length) return
+    if (!$products.length) return
 
-    var index = $items.index(e.target)
+    var index = $products.index(e.target)
 
     if (e.which == 38 && index > 0)                 index--                        // up
-    if (e.which == 40 && index < $items.length - 1) index++                        // down
+    if (e.which == 40 && index < $products.length - 1) index++                        // down
     if (!~index)                                      index = 0
 
-    $items.eq(index).trigger('focus')
+    $products.eq(index).trigger('focus')
   }
 
   function clearMenus(e) {

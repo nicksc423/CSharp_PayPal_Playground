@@ -1,16 +1,16 @@
 ﻿@model ECommerceSite.Models.Category
 @{
-    ViewBag.Title = "Browse Items";
+    ViewBag.Title = "Browse Products";
 }
 <div class="genre">
-    <h3><em>@Model.Name</em> Items</h3>
-    <ul id="item-list">
-        @foreach (var item in Model.Items)
+    <h3><em>@Model.Name</em> Products</h3>
+    <ul id="product-list">
+        @foreach (var product in Model.Products)
         {
             <li>
-                <a href="@Url.Action("Details", new { id = item.ItemId })">
-                    <img alt="@item.Name" src="@item.ItemPictureUrl" />
-                    <span>@item.Name</span>
+                <a href="@Url.Action("Details", new { id = product.ProductId })">
+                    <img alt="@product.Name" src="@product.ProductPictureUrl" />
+                    <span>@product.Name</span>
                 </a>
             </li>
         }

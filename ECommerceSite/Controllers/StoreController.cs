@@ -15,6 +15,7 @@ namespace ECommerceSite.Controllers
         // GET: /Store/
         public ActionResult Index()
         {
+            //need viewModel
             var catagories = dbContext.Categories.ToList();
             return View(catagories);
         }
@@ -23,8 +24,8 @@ namespace ECommerceSite.Controllers
         // GET: /Store/Browse?category=Disco
         public ActionResult Browse(string category)
         {
-            // Retrieve Category and its Associated Items from database
-            var categorieModel = dbContext.Categories.Include("Items")
+            // Retrieve Category and its Associated Products from database
+            var categorieModel = dbContext.Categories.Include("Products")
                 .Single(c => c.Name == category);
 
             return View(categorieModel);
@@ -34,8 +35,8 @@ namespace ECommerceSite.Controllers
         // GET: /Store/Details/5
         public ActionResult Details(int id)
         {
-            var item = dbContext.Items.Find(id);
-            return View(item);
+            var product = dbContext.Products.Find(id);
+            return View(product);
         }
 
         //

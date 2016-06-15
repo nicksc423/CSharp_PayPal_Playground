@@ -11,13 +11,13 @@ namespace ECommerceSite.Infrastructure
     {
         protected override void Seed(ECommerceSiteDB context)
         {
-            var testItem = new Item() { Name = "testItem", Price = 9.99M };
+            var testProduct = new Product() { Name = "testProduct", Price = 9.99M };
             var testCategorie = new Category() { Name = "testCategory" };
-            testItem.Catagorie = testCategorie;
-            testCategorie.Items = new List<Item> { testItem };
+            testProduct.Catagorie = testCategorie;
+            testCategorie.Products = new List<Product> { testProduct };
 
             context.Categories.Add(testCategorie);
-            context.Items.Add(testItem);
+            context.Products.Add(testProduct);
             context.SaveChanges();
 
             base.Seed(context);

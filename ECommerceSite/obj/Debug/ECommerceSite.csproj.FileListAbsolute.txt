@@ -66,3 +66,6 @@ C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\
 C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\bin\Twilio.Api.xml
 C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\bin\PayPal.dll
 C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\bin\PayPal.xml
+C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\obj\Debug\ECommerceSite.Migrations.InitialMigration.resources
+C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\obj\Debug\ECommerceSite.csproj.GenerateResource.Cache
+C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite\bin\PayPalCoreSDK.dll

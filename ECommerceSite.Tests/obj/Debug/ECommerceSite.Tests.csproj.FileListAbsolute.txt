@@ -55,3 +55,5 @@ C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite.
 C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite.Tests\bin\Debug\Microsoft.Owin.Security.Google.dll
 C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite.Tests\bin\Debug\Microsoft.Owin.Security.Facebook.xml
 C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite.Tests\bin\Debug\Microsoft.Owin.Security.Google.xml
+C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite.Tests\bin\Debug\PayPal.dll
+C:\Users\Nick\documents\visual studio 2013\Projects\ECommerceSite\ECommerceSite.Tests\bin\Debug\PayPal.xml

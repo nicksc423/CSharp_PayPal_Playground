@@ -208,19 +208,6 @@ namespace ECommerceSite.Controllers
             return View(model);
         }
 
-        //public async Task<ActionResult> RegisterWithConfirmationEmail(ApplicationUser user)
-        //{
-        //    // Send a confirmation email
-        //    var callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your email");
-
-        //    // Uncomment to debug locally 
-        //    // TempData["ViewBagLink"] = callbackUrl;
-
-        //    ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
-        //                    + "before you can log in.";
-
-        //    return View("Info");
-        //}
 
         //
         // GET: /Account/ConfirmEmail
@@ -474,7 +461,7 @@ namespace ECommerceSite.Controllers
 
         private void MigrateShoppingCart(string UserName)
         {
-            // Associate shopping cart items with logged-in user
+            // Associate shopping cart products with logged-in user
             var cart = ShoppingCart.GetCart(this.HttpContext);
 
             cart.MigrateCart(UserName);

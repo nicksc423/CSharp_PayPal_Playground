@@ -21,7 +21,7 @@ namespace ECommerceSite.Controllers
             // Set up our ViewModel
             var viewModel = new ShoppingCartViewModel
             {
-                CartItems = cart.GetCartItems(),
+                CartProducts = cart.GetCartProducts(),
                 CartTotal = cart.GetTotal()
             };
             // Return the view
@@ -31,14 +31,14 @@ namespace ECommerceSite.Controllers
         // GET: /Store/AddToCart/5
         public ActionResult AddToCart(int id)
         {
-            // Retrieve the item from the database
-            var addedItem = dbContext.Items
-                .Single(item => item.ItemId == id);
+            // Retrieve the product from the database
+            var addedProduct = dbContext.Products
+                .Single(product => product.ProductId == id);
 
             // Add it to the shopping cart
             var cart = ShoppingCart.GetCart(this.HttpContext);
 
-            cart.AddToCart(addedItem);
+            cart.AddToCart(addedProduct);
 
             // Go back to the main store page for more shopping
             return RedirectToAction("Index");
@@ -48,24 +48,24 @@ namespace ECommerceSite.Controllers
         [HttpPost]
         public ActionResult RemoveFromCart(int id)
         {
-            // Remove the item from the cart
+            // Remove the product from the cart
             var cart = ShoppingCart.GetCart(this.HttpContext);
 
             // Get the name of the album to display confirmation
-            string itemName = dbContext.Carts
-                .Single(item => item.ItemId == id).Item.Name;
+            string productName = dbContext.Carts
+                .Single(product => product.ProductId == id).Product.Name;
 
             // Remove from cart
-            int itemCount = cart.RemoveFromCart(id);
+            int productCount = cart.RemoveFromCart(id);
 
             // Display the confirmation message
             var results = new ShoppingCartRemoveViewModel
             {
-                Message = Server.HtmlEncode(itemName) +
+                Message = Server.HtmlEncode(productName) +
                     " has been removed from your shopping cart.",
                 CartTotal = cart.GetTotal(),
                 CartCount = cart.GetCount(),
-                ItemCount = itemCount,
+                ProductCount = productCount,
                 DeleteId = id
             };
             return Json(results);

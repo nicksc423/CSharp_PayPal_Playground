@@ -26,35 +26,35 @@ namespace ECommerceSite.Models
             return GetCart(controller.HttpContext);
         }
 
-        public int AddToCart(Item item)
+        public int AddToCart(Product product)
         {
-            // Get the matching cart and item instances
-            var cartItem = dbContext.Carts.SingleOrDefault(
+            // Get the matching cart and product instances
+            var cartProduct = dbContext.Carts.SingleOrDefault(
                 c => c.CartId == ShoppingCartId
-                && c.ItemId == item.ItemId);
+                && c.ProductId == product.ProductId);
 
-            if (cartItem == null)
+            if (cartProduct == null)
             {
-                // Create a new cart item if no cart item exists
-                cartItem = new Cart
+                // Create a new cart product if no cart product exists
+                cartProduct = new Cart
                 {
-                    ItemId = item.ItemId,
+                    ProductId = product.ProductId,
                     CartId = ShoppingCartId,
                     Count = 1,
                     DateCreated = DateTime.Now
                 };
-                dbContext.Carts.Add(cartItem);
+                dbContext.Carts.Add(cartProduct);
             }
             else
             {
-                // If the item does exist in the cart, 
+                // If the product does exist in the cart, 
                 // then add one to the quantity
-                cartItem.Count++;
+                cartProduct.Count++;
             }
             // Save changes
             dbContext.SaveChanges();
 
-            return cartItem.Count;
+            return cartProduct.Count;
         }
 
         public int RemoveFromCart(int id)
@@ -63,44 +63,44 @@ namespace ECommerceSite.Models
 
             // Get the cart
 
-            var cartItem = dbContext.Carts.Single(
+            var cartProduct = dbContext.Carts.Single(
                 cart => cart.CartId == ShoppingCartId
-                && cart.ItemId == id);
+                && cart.ProductId == id);
 
 
-            int itemCount = 0;
+            int productCount = 0;
 
-            if (cartItem != null)
+            if (cartProduct != null)
             {
-                if (cartItem.Count > 1)
+                if (cartProduct.Count > 1)
                 {
-                    cartItem.Count--;
-                    itemCount = cartItem.Count;
+                    cartProduct.Count--;
+                    productCount = cartProduct.Count;
                 }
                 else
                 {
-                    dbContext.Carts.Remove(cartItem);
+                    dbContext.Carts.Remove(cartProduct);
                 }
                 // Save changes
                 dbContext.SaveChanges();
             }
-            return itemCount;
+            return productCount;
         }
 
         public void EmptyCart()
         {
-            var cartItems = dbContext.Carts.Where(
+            var cartProducts = dbContext.Carts.Where(
                 cart => cart.CartId == ShoppingCartId);
 
-            foreach (var cartItem in cartItems)
+            foreach (var cartProduct in cartProducts)
             {
-                dbContext.Carts.Remove(cartItem);
+                dbContext.Carts.Remove(cartProduct);
             }
             // Save changes
             dbContext.SaveChanges();
         }
 
-        public List<Cart> GetCartItems()
+        public List<Cart> GetCartProducts()
         {
             return dbContext.Carts.Where(
                 cart => cart.CartId == ShoppingCartId).ToList();
@@ -108,23 +108,23 @@ namespace ECommerceSite.Models
 
         public int GetCount()
         {
-            // Get the count of each item in the cart and sum them up
-            int? count = (from cartItems in dbContext.Carts
-                          where cartItems.CartId == ShoppingCartId
-                          select (int?)cartItems.Count).Sum();
+            // Get the count of each product in the cart and sum them up
+            int? count = (from cartProducts in dbContext.Carts
+                          where cartProducts.CartId == ShoppingCartId
+                          select (int?)cartProducts.Count).Sum();
             // Return 0 if all entries are null
             return count ?? 0;
         }
 
         public decimal GetTotal()
         {
-            // Multiply item price by count of that item to get 
-            // the current price for each of those items in the cart
-            // sum all item price totals to get the cart total
-            decimal? total = (from cartItems in dbContext.Carts
-                              where cartItems.CartId == ShoppingCartId
-                              select (int?)cartItems.Count *
-                              cartItems.Item.Price).Sum();
+            // Multiply product price by count of that product to get 
+            // the current price for each of those products in the cart
+            // sum all product price totals to get the cart total
+            decimal? total = (from cartProducts in dbContext.Carts
+                              where cartProducts.CartId == ShoppingCartId
+                              select (int?)cartProducts.Count *
+                              cartProducts.Product.Price).Sum();
 
             return total ?? decimal.Zero;
         }
@@ -134,20 +134,20 @@ namespace ECommerceSite.Models
             decimal orderTotal = 0;
             order.OrderDetails = new List<OrderDetail>();
 
-            var cartItems = GetCartItems();
-            // Iterate over the items in the cart, 
+            var cartProducts = GetCartProducts();
+            // Iterate over the products in the cart, 
             // adding the order details for each
-            foreach (var item in cartItems)
+            foreach (var product in cartProducts)
             {
                 var orderDetail = new OrderDetail
                 {
-                    ItemId = item.ItemId,
+                    ProductId = product.ProductId,
                     OrderId = order.OrderId,
-                    UnitPrice = item.Item.Price,
-                    Quantity = item.Count
+                    UnitPrice = product.Product.Price,
+                    Quantity = product.Count
                 };
                 // Set the order total of the shopping cart
-                orderTotal += (item.Count * item.Item.Price);
+                orderTotal += (product.Count * product.Product.Price);
                 order.OrderDetails.Add(orderDetail);
                 dbContext.OrderDetails.Add(orderDetail);
 
@@ -170,8 +170,7 @@ namespace ECommerceSite.Models
             {
                 if (!string.IsNullOrWhiteSpace(context.User.Identity.Name))
                 {
-                    context.Session[CartSessionKey] =
-                        context.User.Identity.Name;
+                    context.Session[CartSessionKey] = context.User.Identity.Name;
                 }
                 else
                 {
@@ -191,9 +190,9 @@ namespace ECommerceSite.Models
             var shoppingCart = dbContext.Carts.Where(
                 c => c.CartId == ShoppingCartId);
 
-            foreach (Cart item in shoppingCart)
+            foreach (Cart product in shoppingCart)
             {
-                item.CartId = userName;
+                product.CartId = userName;
             }
             dbContext.SaveChanges();
         }

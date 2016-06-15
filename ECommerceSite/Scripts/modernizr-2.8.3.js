@@ -349,20 +349,20 @@ window.Modernizr = (function( window, document, undefined ) {
      */
     function testDOMProps( props, obj, elem ) {
         for ( var i in props ) {
-            var item = obj[props[i]];
-            if ( item !== undefined) {
+            var product = obj[props[i]];
+            if ( product !== undefined) {
 
                 // return the property name as a string
                 if (elem === false) return props[i];
 
                 // let's bind a function
-                if (is(item, 'function')){
+                if (is(product, 'function')){
                   // default to autobind unless override
-                  return item.bind(elem || obj);
+                  return product.bind(elem || obj);
                 }
 
                 // return the unbound function or obj or value
-                return item;
+                return product;
             }
         }
         return false;
@@ -774,10 +774,10 @@ window.Modernizr = (function( window, document, undefined ) {
     //   `('localStorage' in window) && ` test first because otherwise Firefox will
     //   throw bugzil.la/365772 if cookies are disabled
 
-    // Also in iOS5 Private Browsing mode, attempting to use localStorage.setItem
+    // Also in iOS5 Private Browsing mode, attempting to use localStorage.setProduct
     // will throw the exception:
     //   QUOTA_EXCEEDED_ERRROR DOM Exception 22.
-    // Peculiarly, getItem and removeItem calls do not throw.
+    // Peculiarly, getProduct and removeProduct calls do not throw.
 
     // Because we are forced to try/catch this, we'll go aggressive.
 
@@ -787,8 +787,8 @@ window.Modernizr = (function( window, document, undefined ) {
 
     tests['localstorage'] = function() {
         try {
-            localStorage.setItem(mod, mod);
-            localStorage.removeItem(mod);
+            localStorage.setProduct(mod, mod);
+            localStorage.removeProduct(mod);
             return true;
         } catch(e) {
             return false;
@@ -797,8 +797,8 @@ window.Modernizr = (function( window, document, undefined ) {
 
     tests['sessionstorage'] = function() {
         try {
-            sessionStorage.setItem(mod, mod);
-            sessionStorage.removeItem(mod);
+            sessionStorage.setProduct(mod, mod);
+            sessionStorage.removeProduct(mod);
             return true;
         } catch(e) {
             return false;

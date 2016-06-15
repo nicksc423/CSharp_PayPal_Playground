@@ -8,7 +8,7 @@ namespace ECommerceSite.ViewModels
 {
     public class ShoppingCartViewModel
     {
-        public List<Cart> CartItems { get; set; }
+        public List<Cart> CartProducts { get; set; }
         public decimal CartTotal { get; set; }
     }
 
@@ -17,7 +17,7 @@ namespace ECommerceSite.ViewModels
         public string Message { get; set; }
         public decimal CartTotal { get; set; }
         public int CartCount { get; set; }
-        public int ItemCount { get; set; }
+        public int ProductCount { get; set; }
         public int DeleteId { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ECommerceSite.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -29,38 +30,33 @@ namespace ECommerceSite.ViewModels
         [StringLength(40)]
         public string City { get; set; }
 
-        [Required(ErrorMessage = "State is required")]
-        [StringLength(40)]
         public string State { get; set; }
+
+        [Required(ErrorMessage = "Country is required")]
+        public string Country { get; set; }
 
         [Required(ErrorMessage = "Postal Code is required")]
         [DisplayName("Postal Code")]
-        [StringLength(10)]
-        public string PostalCode { get; set; }
-
-        [Required(ErrorMessage = "Country is required")]
-        [StringLength(40)]
-        public string Country { get; set; }
+        [IntegerLength(10)]
+        public int PostalCode { get; set; }
 
         [Display(Name = "Credit Card")]
-        [NotMapped]
         [Required]
         [CreditCard]
-        public String CreditCardNumber { get; set; }
+        public string CreditCardNumber { get; set; }
+
+        [Required]
+        public int CSC { get; set; }
 
         [Display(Name = "Credit Card Type")]
-        [NotMapped]
-        public String CcType { get; set; }
+        public string CcType { get; set; }
 
         [Display(Name = "Expiration Month")]
-        [NotMapped]
-        public String ExpirationMonth { get; set; }
+        public string ExpirationMonth { get; set; }
 
         [Display(Name = "Expiration Year")]
-        [NotMapped]
         public string ExpirationYear { get; set; }
 
-        [NotMapped]
         public bool SaveInfo { get; set; }
     }
 }

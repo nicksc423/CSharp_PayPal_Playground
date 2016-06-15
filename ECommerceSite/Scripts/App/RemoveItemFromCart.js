@@ -9,10 +9,10 @@
                 function (data) {
                     // Successful requests get here
                     // Update the page elements
-                    if (data.ItemCount == 0) {
+                    if (data.ProductCount == 0) {
                         $('#row-' + data.DeleteId).fadeOut('slow');
                     } else {
-                        $('#item-count-' + data.DeleteId).text(data.ItemCount);
+                        $('#product-count-' + data.DeleteId).text(data.ProductCount);
                     }
                     $('#cart-total').text(data.CartTotal);
                     $('#update-message').text(data.Message);

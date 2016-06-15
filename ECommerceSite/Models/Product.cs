@@ -11,19 +11,19 @@ using System.Web.Mvc;
 namespace ECommerceSite.Models
 {
     [Bind(Exclude = "ID")]
-    public class Item
+    public class Product
     {
         //private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
 
         [Key]
         [ScaffoldColumn(false)]
-        public int ItemId { get; set; }
+        public int ProductId { get; set; }
 
         [DisplayName("Categorie")]
         public int CategorieId { get; set; }
 
-        [Required(ErrorMessage = "An Item Name is required")]
+        [Required(ErrorMessage = "An Product Name is required")]
         [StringLength(160)]
         public string Name { get; set; }
         
@@ -62,9 +62,9 @@ namespace ECommerceSite.Models
             }
         }
 
-        [DisplayName("Item Picture URL")]
+        [DisplayName("Product Picture URL")]
         [StringLength(1024)]
-        public string ItemPictureUrl { get; set; }
+        public string ProductPictureUrl { get; set; }
 
         public virtual Category Catagorie { get; set; }
         public virtual List<OrderDetail> OrderDetails { get; set; }

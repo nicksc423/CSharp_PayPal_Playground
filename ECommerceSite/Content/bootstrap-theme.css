@@ -387,9 +387,9 @@
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
           box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
 }
-.list-group-item.active,
-.list-group-item.active:hover,
-.list-group-item.active:focus {
+.list-group-product.active,
+.list-group-product.active:hover,
+.list-group-product.active:focus {
   text-shadow: 0 -1px 0 #286090;
   background-image: -webkit-linear-gradient(top, #337ab7 0%, #2b669a 100%);
   background-image:      -o-linear-gradient(top, #337ab7 0%, #2b669a 100%);
@@ -399,9 +399,9 @@
   background-repeat: repeat-x;
   border-color: #2b669a;
 }
-.list-group-item.active .badge,
-.list-group-item.active:hover .badge,
-.list-group-item.active:focus .badge {
+.list-group-product.active .badge,
+.list-group-product.active:hover .badge,
+.list-group-product.active:focus .badge {
   text-shadow: none;
 }
 .panel {

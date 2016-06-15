@@ -1,12 +1,12 @@
-﻿@model ECommerceSite.Models.Item
+﻿@model ECommerceSite.Models.Product
 @{
-    ViewBag.Title = "Item - " + Model.Name;
+    ViewBag.Title = "Product - " + Model.Name;
 }
 <h2>@Model.Name</h2>
 <p>
-    <img alt="@Model.Name" src="@Model.ItemPictureUrl" />
+    <img alt="@Model.Name" src="@Model.ProductPictureUrl" />
 </p>
-<div id="item-details">
+<div id="product-details">
     <p>
         <em>Genre:</em>
         @Model.Catagorie.Name
@@ -17,7 +17,7 @@
     </p>
     <p class="button">
         @Html.ActionLink("Add to cart", "AddToCart",
-        "ShoppingCart", new { id = Model.ItemId }, "")
+        "ShoppingCart", new { id = Model.ProductId }, "")
     </p>
 </div>
 
